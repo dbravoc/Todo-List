@@ -10,7 +10,7 @@ function mostrarResumen() {
     const totalTareas = tareas.length; // Calculo la longitud de las tareas totales
     const totalCompletadas = tareas.filter(tarea => tarea.completada).length; // Filtro las tareas completadas con .filter
     const resumen = document.querySelector('.resumen'); //tomo la clase resumen del html para agregar el total tareas y completadas con el .innerHTML
-    resumen.innerHTML = ` // d
+    resumen.innerHTML = `
         <p>Total de tareas: ${totalTareas}</p>
         <p>Tareas completadas: ${totalCompletadas}</p>
     `;
@@ -50,38 +50,36 @@ function agregarTarea(descripcion) {
 }
 
 // FUNCION BORRAR TAREA
-function borrarTarea(id) { // Declaración de la función que toma un argumento "id"
+function borrarTarea(id) { // Declaro la funcion borrar tomando como argumento el "id"
     const indice = tareas.findIndex(tarea => tarea.id === id);
-    // Utiliza el método "findIndex" para buscar la tarea en el arreglo "tareas" cuyo "id" coincida con el valor pasado como "id". "indice" almacenará el índice de la tarea en el arreglo, o -1 si no se encuentra.
+    // Utilizo método "findIndex" para buscar el id seleccionado dentro de cada elemento "tarea" en el arreglo "tareas". Guarda -1 si no lo encuentra
 
-    if (indice !== -1) { // Comprueba si se encontró una tarea (es decir, si "indice" no es igual a -1).
-        tareas.splice(indice, 1);
-        // Utiliza el método "splice" para eliminar un elemento del arreglo "tareas" en la posición "indice". El segundo argumento, en este caso, es 1, lo que significa que se eliminará solo un elemento.
-        mostrarResumen(); // Llama a la función "mostrarResumen" para actualizar el resumen de tareas.
-        mostrarListaTareas(); // Llama a la función "mostrarListaTareas" para actualizar la lista de tareas en la página.
+    if (indice !== -1) { // Valido si se encontro el "id"
+        tareas.splice(indice, 1); // Utilizo el método "splice" para eliminar un solo elemento del arreglo "tareas" en la posición "indice".
+        mostrarResumen(); // actualizo resumen
+        mostrarListaTareas(); // actualizo lista tareas
     }
 }
-// HASTA AQUI VOOOOOY QUEDA MODIFICAR EL ANTERIOR JEJE
 
 // Función para marcar una tarea como completada
 function marcarComoCompletada(id) {
-    const tarea = tareas.find(t => t.id === id);
-    if (tarea) {
-        tarea.completada = !tarea.completada;
-        mostrarResumen();
-        mostrarListaTareas();
+    const tarea = tareas.find(tarea => tarea.id === id); //Busco con find el input id y lo asigno a tarea
+    if (tarea) { // valido si tarea encontro un el input id
+        tarea.completada = !tarea.completada; //dado que encontro el valor, invierte el valor de completada entre true y false
+        mostrarResumen(); //actualizo resumen
+        mostrarListaTareas(); //actualizo lista tareas
     }
 }
 
 // Event listener para el botón de agregar tarea
-document.getElementById('agregarTarea').addEventListener('click', () => {
-    const descripcion = document.getElementById('descripcionTarea').value;
-    if (descripcion.trim() !== '') {
-        agregarTarea(descripcion);
-        document.getElementById('descripcionTarea').value = '';
+document.getElementById('agregarTarea').addEventListener('click', () => { //activa el id agregartarea al hacer clic
+    const descripcion = document.getElementById('descripcionTarea').value; //asigno el input de descripcion al dato descripcion
+    if (descripcion.trim() !== '') { //valido los espacios en blanco
+        agregarTarea(descripcion); //si no esta blanco, se crea la tarea
+        document.getElementById('descripcionTarea').value = ''; //dejo el campo del html de descripcion en blanco para una nueva tarea
     }
 });
 
-// Llama a las funciones iniciales
+// actualizamos el resumen y la lista de tareas
 mostrarResumen();
 mostrarListaTareas();
