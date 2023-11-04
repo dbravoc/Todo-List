@@ -23,17 +23,30 @@ function mostrarListaTareas() {
     tareas.forEach(tarea => { //Recorro cada tarea de mis tareas
         const tareaElement = document.createElement('div'); //creo un div por cada tarea que encuentro 
         tareaElement.innerHTML = ` 
-            <p>${tarea.descripcion}</p>
-            <button onclick="borrarTarea(${tarea.id})">Borrar</button>
-            <label>
-                <input type="checkbox" ${tarea.completada ? 'checked' : ''} onchange="marcarComoCompletada(${tarea.id})">
-                ${tarea.completada ? 'Completa' : 'Pendiente'}
-            </label>
+        <div class="id-posicion">    
+                <p>${tarea.id}
+                </p>
+            </div>    
+        <div class="tarea-posicion">    
+                <p>${tarea.descripcion}
+                </p>
+            </div>
+            <div class="completada-posicion">
+                <label>
+                    <input type="checkbox" ${tarea.completada ? 'checked' : ''} onchange="marcarComoCompletada(${tarea.id})">
+                    ${tarea.completada ? 'Completa' : 'Pendiente'}
+                </label>
+            </div>
+            <div class="borrar-posicion">
+                <button onclick="borrarTarea(${tarea.id})">Borrar</button>
+            </div>
+
         `; // con lo anterior:
             //creo un p con la descripción de la tarea
             //creo un botón que borra el elemento tarea de mis tareas
             // creo un checkbox que cambia la propiedad "completada" entre false y true, siendo posible altenarlas
-        listaTareas.appendChild(tareaElement); //agrego la tarea dentro de la lista actualizada.
+            tareaElement.classList.add('linea-tarea') 
+            listaTareas.appendChild(tareaElement); //agrego la tarea dentro de la lista actualizada.
     });
 }
 

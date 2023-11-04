@@ -1,3 +1,48 @@
-.titulos{
-    
+body{
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 5px;
+}
+
+
+.titulo{
+    display: flex;
+    font-size: xx-large;
+    border-bottom: 1px solid gray;
+    padding: 5px;
+}
+
+.font-resumen{
+    font-size: larger;
+    color: darkblue;
+}
+
+.linea-tarea{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 1fr;
+    grid-template-areas: 
+    "id-posicion tarea-posicion completada-posicion borrar-posicion";
+    padding: 2px;
+}
+.id-posicion{
+    grid-area: id-posicion;
+    display: flex;
+    align-items: center;
+}
+.tarea-posicion{
+    grid-area: tarea-posicion;
+    display: flex;
+    align-items: center;
+}
+
+.completada-posicion{
+    grid-area: completada-posicion;
+    display: flex;
+    align-items: center;
+}
+
+.borrar-posicion{
+    grid-area: borrar-posicion;
+    display: flex;
+    align-items: center;
 }

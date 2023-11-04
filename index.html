@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Todo List</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-
-    <Div>
+<div>
+    <Div class="titulo">
         Todo List
     </Div>
-    <div class="resumen">
+    <input type="text" id="descripcionTarea" placeholder="Descripción de la tarea">
+    <button id="agregarTarea">Agregar Tarea</button>
+    <div class="resumen font-resumen">
         <!-- Aquí mostrarás el resumen de tareas -->
     </div>
     <div class="tareas">
         <!-- Aquí mostrarás la lista de tareas -->
     </div>
-    <input type="text" id="descripcionTarea" placeholder="Descripción de la tarea">
-    <button id="agregarTarea">Agregar Tarea</button>
-
+</div>
 <script src="assets/js/tareas.js"></script>
 </body>
 </html>
